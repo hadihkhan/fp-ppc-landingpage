@@ -605,6 +605,101 @@ ul {
     padding: 20px;
 }
 
+/* Video Testimonials Section */
+.video-section {
+    background-color: var(--white);
+    padding-bottom: 40px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.video-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    cursor: pointer;
+}
+
+.video-wrapper iframe,
+.video-wrapper img.video-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    transition: var(--transition);
+}
+
+.video-wrapper:hover .video-thumb {
+    opacity: 0.8;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: var(--transition);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.play-button i {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-left: 4px;
+    /* Optical adjustment */
+}
+
+.video-wrapper:hover .play-button {
+    background-color: var(--accent-color);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-wrapper:hover .play-button i {
+    color: var(--white);
+}
+
+.video-caption {
+    padding: 20px;
+    text-align: center;
+}
+
+.video-caption h4 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
 /* CTA Section */
 .cta-section {
     background-color: var(--primary-color);
@@ -751,7 +846,9 @@ ul {
     .contact-form {
         padding: 20px;
     }
-}/* Testimonials Section */
+}
+
+/* Testimonials Section */
 .testimonials-section {
     background-color: #f7f9fc;
 }

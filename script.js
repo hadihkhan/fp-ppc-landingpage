@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerOffset = 80; // Height of fixed navbar
@@ -75,5 +75,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const hero = document.querySelector('.hero');
     // We assume the image will be downloaded to assets/fivepearls_hero_bg.webp
     // This adds the class that sets the background image
-    hero.classList.add('hero-with-bg'); 
+    hero.classList.add('hero-with-bg');
+
+    // Video Thumbnails Click to Play
+    const videoWrappers = document.querySelectorAll('.video-wrapper');
+
+    videoWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function () {
+            const videoSrc = this.getAttribute('data-video-src');
+            if (videoSrc) {
+                // Determine if we need to append autoplay
+                const symbol = videoSrc.includes('?') ? '&' : '?';
+                const autoplaySrc = videoSrc + symbol + "autoplay=1";
+
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', autoplaySrc);
+                iframe.setAttribute('width', '100%');
+                iframe.setAttribute('height', '100%');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', '');
+
+                this.innerHTML = ''; // Clear thumbnail and play button
+                this.appendChild(iframe);
+            }
+        });
+    });
 });
